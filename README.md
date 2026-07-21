@@ -1,0 +1,2 @@
+# Examining-how-national-symbols-and-cultural-identity-are-communicated-by-Seattle-world-cup-fans
+A digital research project examining the question: How do fans use national symbols (flags, colors, chants) as a communicative code intended for specific audiences, and does the intended audience (fellow nationals, other diaspora communities, or the host city broadly) shape how legible or elaborate that display is?
