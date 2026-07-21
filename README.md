@@ -1,8 +1,20 @@
-# Field Dossier — starter website
+# The Dispatch — starter website
 
-A simple 4-page website: Home, Photo Essay (with individual photo pages),
+A simple 4-page website styled like a magazine feature: Home, Photo Essay
+(with individual photo pages, laid out as alternating full-bleed spreads),
 About, and Research Paper. No coding knowledge required to edit — just text
 editing and swapping image files.
+
+A few new things to know in this version:
+- **Pull quotes**: the `<blockquote class="pullquote">` blocks on the About
+  and Research Paper pages are meant for a striking quote — replace the
+  quote text and the `<cite>` attribution line
+- **Drop caps**: the first paragraph in each prose section automatically
+  gets an oversized first letter (the `class="dropcap"` on that `<p>` does
+  this) — no need to do anything extra
+- **Masthead**: the small "Vol. 1, No. 1" line and "Field Report · Social
+  Science" label at the top of every page can be edited to say whatever fits
+  your project
 
 ## What's in this folder
 

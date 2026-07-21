@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="820" viewBox="0 0 1400 820">
+  <rect width="1400" height="820" fill="#EDEAE0"/>
+  <rect x="0" y="0" width="1400" height="820" fill="none" stroke="#131210" stroke-width="3"/>
+  <line x1="24" y1="24" x2="1376" y2="24" stroke="#131210" stroke-width="1"/>
+  <line x1="24" y1="796" x2="1376" y2="796" stroke="#131210" stroke-width="1"/>
+  <text x="700.0" y="396.0" font-family="IBM Plex Mono, monospace" font-size="26" fill="#131210" text-anchor="middle" letter-spacing="2">YOUR LEAD PHOTOGRAPH</text>
+  <text x="700.0" y="432.0" font-family="IBM Plex Mono, monospace" font-size="15" fill="#C4321F" text-anchor="middle" letter-spacing="1">REPLACE THIS FILE — SEE README</text>
+</svg>

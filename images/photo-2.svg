@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700">
+  <rect width="900" height="700" fill="#EDEAE0"/>
+  <rect x="0" y="0" width="900" height="700" fill="none" stroke="#131210" stroke-width="3"/>
+  <line x1="24" y1="24" x2="876" y2="24" stroke="#131210" stroke-width="1"/>
+  <line x1="24" y1="676" x2="876" y2="676" stroke="#131210" stroke-width="1"/>
+  <text x="450.0" y="336.0" font-family="IBM Plex Mono, monospace" font-size="26" fill="#131210" text-anchor="middle" letter-spacing="2">FIELD PHOTOGRAPH 02</text>
+  <text x="450.0" y="372.0" font-family="IBM Plex Mono, monospace" font-size="15" fill="#C4321F" text-anchor="middle" letter-spacing="1">REPLACE THIS FILE</text>
+</svg>
