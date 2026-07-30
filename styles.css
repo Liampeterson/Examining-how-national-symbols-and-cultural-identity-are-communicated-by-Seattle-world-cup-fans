@@ -156,19 +156,21 @@ img { max-width: 100%; display: block; }
 .site-footer a:hover { color: var(--accent); }
 
 /* -------------------------------------------------------------------------
-   4a. HOME — hero (asymmetrical: big headline left, narrower intro
-   column indented beneath it, heavy negative space around both)
+   4a. HOME — hero, centered: headline, "Field Log" label, and the intro
+   paragraph all sit centered on the page.
    ------------------------------------------------------------------------- */
 .hero {
   padding: clamp(1rem, 4vw, 2rem) 0 clamp(3rem, 8vw, 6rem);
+  text-align: center;
 }
 
 .hero__title {
   font-size: clamp(2.6rem, 7vw, 5.2rem);
   font-weight: 300;
   line-height: 1.02;
-  max-width: 14ch;
+  max-width: 20ch;
   letter-spacing: -0.01em;
+  margin: 0 auto; /* centers the title's own text block within .hero */
 }
 
 .hero__title em {
@@ -178,8 +180,7 @@ img { max-width: 100%; display: block; }
 }
 
 .hero__intro {
-  margin-top: clamp(1.5rem, 5vw, 2.5rem);
-  margin-left: clamp(0rem, 14vw, 22rem); /* pushes the paragraph right, off-axis from the headline */
+  margin: clamp(1.5rem, 5vw, 2.5rem) auto 0; /* auto left/right centers this block */
   max-width: 42ch;
 }
 
@@ -382,7 +383,7 @@ img { max-width: 100%; display: block; }
    6. SMALL SCREENS
    ------------------------------------------------------------------------- */
 @media (max-width: 800px) {
-  .hero__intro { margin-left: 0; }
+  .hero__title { max-width: none; }
 
   .photo-link {
     aspect-ratio: 4 / 3;
