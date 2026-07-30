@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT ME: this shows up as the browser tab title -->
+  <title>Supporters' Archive — Symbols of Fandom in Seattle World Cup Culture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       MASTHEAD — plain text only on the home page, on purpose.
+       No nav links here: the four photos below are the only
+       clickable things on this page.
+       ============================================================ -->
+  <header class="masthead container">
+    <span class="masthead__wordmark">Supporters' Archive · Field Study, Seattle WA</span>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO — big headline + short intro, deliberately off-center.
+         EDIT ME: replace both the headline and the 2-4 sentence
+         intro paragraph with your own project description.
+         ============================================================ -->
+    <section class="hero container">
+      <h1 class="hero__title">Symbols &amp; <em>ritual</em> in fan identity</h1>
+      <div class="hero__intro">
+        <span class="eyebrow">Field Log</span>
+        <p>
+          <!-- EDIT ME -->
+          This archive presents four photo essays documenting how Seattle-based
+          World Cup fans use flags, jerseys, chants, and costumes to express identity
+          and belonging. Field notes, interviews, and photographs were collected during
+          a summer humanities research program based in Seattle, Washington, with
+          fieldwork conducted at watch parties, fan marches, and match-day gatherings
+          around the city.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BENTO GRID — the only interactive elements on this page.
+         Each <a class="tile"> is one full category photo; nothing
+         else on the page links anywhere. To reorder categories, move
+         the whole <a class="tile ...">...</a> block. To resize a tile,
+         edit its .tile--<name> rule in styles.css (search "4b. HOME").
+         ============================================================ -->
+    <section class="container">
+      <div class="bento">
+
+        <a class="tile tile--flags" href="flags.html">
+          <!-- EDIT ME: swap src for a real photo, e.g. images/flags-cover.jpg -->
+          <img class="tile__img" src="images/cover-flags.svg" alt="Flags photo essay">
+          <div class="tile__label">
+            <div>
+              <span class="tile__code">F-01</span>
+              <h2 class="tile__name">Flags</h2>
+            </div>
+            <span class="tile__arrow" aria-hidden="true">&#8599;</span>
+          </div>
+        </a>
+
+        <a class="tile tile--jerseys" href="jerseys.html">
+          <img class="tile__img" src="images/cover-jerseys.svg" alt="Jerseys photo essay">
+          <div class="tile__label">
+            <div>
+              <span class="tile__code">J-01</span>
+              <h2 class="tile__name">Jerseys</h2>
+            </div>
+            <span class="tile__arrow" aria-hidden="true">&#8599;</span>
+          </div>
+        </a>
+
+        <a class="tile tile--rituals" href="rituals.html">
+          <img class="tile__img" src="images/cover-rituals.svg" alt="Rituals photo essay">
+          <div class="tile__label">
+            <div>
+              <span class="tile__code">R-01</span>
+              <h2 class="tile__name">Rituals</h2>
+            </div>
+            <span class="tile__arrow" aria-hidden="true">&#8599;</span>
+          </div>
+        </a>
+
+        <a class="tile tile--costumes" href="costumes.html">
+          <img class="tile__img" src="images/cover-costumes.svg" alt="Costumes photo essay">
+          <div class="tile__label">
+            <div>
+              <span class="tile__code">C-01</span>
+              <h2 class="tile__name">Costumes</h2>
+            </div>
+            <span class="tile__arrow" aria-hidden="true">&#8599;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer is plain text — no link — to keep this page's only
+       interactive elements the four photos above. -->
+  <footer class="site-footer container">
+    <p>Summer Humanities Research Program · Seattle, WA</p>
+  </footer>
+
+</body>
+</html>
