@@ -1,0 +1,400 @@
+/* =========================================================================
+   STYLES.CSS
+   One stylesheet, shared by every page.
+   Read top to bottom:
+     1. Fonts + tokens (color/type/space) — change the whole site from here
+     2. Reset / base
+     3. Masthead + footer
+     4. Home page: hero + vertical category list
+     5. Sub-pages: essay header, essay blocks, more-shots grid, prev/next
+     6. Small screens
+   "EDIT ME" comments mark what you'll actually want to touch.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* -------------------------------------------------------------------------
+   1. TOKENS
+   A dominant charcoal surface, one sharp lime accent used sparingly, and
+   two elevated tones for bento-style layering. Colors are intentionally
+   NOT distributed evenly — almost everything on the page is charcoal/off-
+   white; lime appears only where it should draw the eye.
+   ------------------------------------------------------------------------- */
+:root {
+  /* EDIT ME: colors */
+  --bg: #121212;            /* dominant surface — deep charcoal */
+  --bg-elevated: #1A1A19;   /* first layer up — bento tile background */
+  --bg-elevated-2: #202020; /* second layer up — hover / deepest tile */
+  --text: #F2F0EA;          /* primary text, warm off-white (not pure white) */
+  --text-muted: #8C8A83;    /* secondary / caption text */
+  --line: #2A2A27;          /* hairline borders, seams between bento tiles */
+  --accent: #CCFF00;        /* neon lime — the ONE sharp accent. use rarely. */
+  --accent-dim: #9FC700;    /* pressed/hover state for the accent */
+
+  /* type */
+  --font-display: 'Fraunces', serif;   /* big expressive headings */
+  --font-body: 'Newsreader', serif;    /* quiet reading serif */
+  --font-mono: 'IBM Plex Mono', monospace; /* small caps labels, catalog codes */
+
+  /* layout */
+  --max-width: 1200px;
+  --gutter: clamp(1.25rem, 4vw, 4rem); /* generous, responsive side margin */
+  --seam: 3px; /* gap between bento tiles */
+}
+
+/* -------------------------------------------------------------------------
+   2. RESET / BASE
+   ------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* -------------------------------------------------------------------------
+   3. MASTHEAD + FOOTER
+   The home page masthead has NO nav — the four photos are the only
+   interactive elements on that page. Sub-pages carry a small text nav
+   for wayfinding between essays (see section 5, .site-nav).
+   ------------------------------------------------------------------------- */
+.masthead {
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.masthead__wordmark {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.masthead__wordmark a {
+  text-decoration: none;
+  color: var(--text-muted);
+}
+
+.masthead__wordmark a:hover { color: var(--text); }
+
+/* small text-only nav, used only on sub-pages */
+.site-nav {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.site-footer {
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 8vw, 5rem);
+  margin-top: clamp(3rem, 8vw, 6rem);
+  border-top: 1px solid var(--line);
+}
+
+.site-footer p {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.site-footer a { color: var(--text-muted); text-decoration: underline; }
+.site-footer a:hover { color: var(--accent); }
+
+/* -------------------------------------------------------------------------
+   4a. HOME — hero (asymmetrical: big headline left, narrower intro
+   column indented beneath it, heavy negative space around both)
+   ------------------------------------------------------------------------- */
+.hero {
+  padding: clamp(1rem, 4vw, 2rem) 0 clamp(3rem, 8vw, 6rem);
+}
+
+.hero__title {
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  font-weight: 300;
+  line-height: 1.02;
+  max-width: 14ch;
+  letter-spacing: -0.01em;
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.hero__intro {
+  margin-top: clamp(1.5rem, 5vw, 2.5rem);
+  margin-left: clamp(0rem, 14vw, 22rem); /* pushes the paragraph right, off-axis from the headline */
+  max-width: 42ch;
+}
+
+.hero__intro p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.hero__intro .eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+/* -------------------------------------------------------------------------
+   4b. HOME — a vertical, scrollable list of the four categories.
+   Each .category is: one big photo (the ONLY clickable element — the
+   <a class="photo-link">), then a heading and a short blurb sitting
+   underneath it as plain, non-interactive text. All four photos share
+   the same aspect ratio so they read as one consistent list.
+   ------------------------------------------------------------------------- */
+.category-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.category {
+  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+  border-top: 1px solid var(--line);
+}
+
+.category:first-child { border-top: none; padding-top: 0; }
+
+.photo-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  aspect-ratio: 16 / 9; /* same shape for every photo, however big the screen */
+  width: 100%;
+}
+
+.photo-link__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  opacity: 0.9;
+}
+
+.photo-link:hover .photo-link__img,
+.photo-link:focus-visible .photo-link__img {
+  transform: scale(1.03);
+  opacity: 1;
+}
+
+.category__copy {
+  margin-top: clamp(1.25rem, 3vw, 1.75rem);
+  max-width: 62ch;
+}
+
+.category__code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.category__title {
+  /* the secondary/accent color, so each heading pops against the
+     charcoal background and the muted body text below it */
+  color: var(--accent);
+  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  font-weight: 400;
+}
+
+.category__blurb {
+  margin-top: 0.75rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* -------------------------------------------------------------------------
+   5. SUB-PAGES (the four photo essays)
+   ------------------------------------------------------------------------- */
+.essay-header {
+  padding: clamp(2rem, 5vw, 3rem) 0 clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.essay-header h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300;
+  margin-top: 0.6rem;
+}
+
+.essay-header__framework {
+  max-width: 52ch;
+  color: var(--text-muted);
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.essay {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+
+.essay-block {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.essay-block:nth-child(even) {
+  /* alternate which side the image sits on, for asymmetry down the page */
+  direction: rtl;
+}
+.essay-block:nth-child(even) > * { direction: ltr; }
+
+.essay-block__caption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 0.6rem 0 0;
+}
+
+.essay-block__text p {
+  margin-top: 0;
+  color: var(--text);
+}
+
+.essay-block__text .placeholder-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.75rem;
+  margin-top: 1rem;
+}
+
+.more-shots h2 {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.more-shots__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--seam);
+}
+
+.more-shots figure {
+  margin: 0;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.more-shots figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 0.6rem 0.8rem;
+}
+
+.essay-nav {
+  padding: 1rem 0 clamp(3rem, 8vw, 5rem);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  margin-top: 1rem;
+}
+
+.essay-nav a {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  padding-top: 1rem;
+}
+
+.essay-nav a:hover { color: var(--accent); }
+
+/* -------------------------------------------------------------------------
+   6. SMALL SCREENS
+   ------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .hero__intro { margin-left: 0; }
+
+  .photo-link {
+    aspect-ratio: 4 / 3;
+  }
+
+  .essay-block,
+  .essay-block:nth-child(even) {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+
+  .more-shots__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

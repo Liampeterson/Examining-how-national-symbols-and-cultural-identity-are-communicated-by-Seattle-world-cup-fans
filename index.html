@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- EDIT ME: this shows up as the browser tab title -->
+  <title>Supporters' Archive — Symbols of Fandom in Seattle World Cup Culture</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       MASTHEAD — plain text only on the home page, on purpose.
+       No nav links here: the four photos below are the only
+       clickable things on this page.
+       ============================================================ -->
+  <header class="masthead container">
+    <span class="masthead__wordmark">Supporters' Archive · Field Study, Seattle WA</span>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO — big headline + short intro, deliberately off-center.
+         EDIT ME: replace both the headline and the 2-4 sentence
+         intro paragraph with your own project description.
+         ============================================================ -->
+    <section class="hero container">
+      <h1 class="hero__title">How do fans use <em>symbols, ritual, &amp; nationality</em> to perform identity?</h1>
+      <div class="hero__intro">
+        <span class="eyebrow">Field Log</span>
+        <p>
+          <!-- EDIT ME -->
+          This archive presents four photo essays documenting how Seattle-based
+          World Cup fans use flags, jerseys, chants, and costumes to express identity
+          and belonging. Field notes, interviews, and photographs were collected during
+          a summer humanities research program based in Seattle, Washington, with
+          fieldwork conducted at watch parties, fan marches, and match-day gatherings
+          around the city.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORY LIST — the only interactive elements on this page.
+         Each category is one <article class="category"> containing:
+           1) a photo wrapped in <a class="photo-link"> — the ONLY link
+           2) a heading + short blurb underneath, as plain text (not a link)
+         All four photos share the same aspect ratio (set in styles.css)
+         so they read as one consistent scrolling list.
+         To reorder categories, move the whole <article>...</article>
+         block up or down. To edit a blurb, just rewrite the text inside
+         its <p class="category__blurb">.
+         ============================================================ -->
+    <section class="container">
+      <div class="category-list">
+
+        <article class="category">
+          <a class="photo-link" href="flags.html" aria-label="View the Flags photo essay">
+            <!-- EDIT ME: swap src for a real photo, e.g. images/flags-cover.jpg -->
+            <img class="photo-link__img" src="images/cover-flags.svg" alt="Flags photo essay">
+          </a>
+          <div class="category__copy">
+            <span class="category__code">F-01</span>
+            <h2 class="category__title">Flags</h2>
+            <!-- EDIT ME -->
+            <p class="category__blurb">
+              Flags convert private loyalty into a public, legible claim — visible across
+              a stadium concourse or a living room window long before anyone speaks. They
+              mark territory and allegiance at a glance, making them one of the most
+              immediate symbols fans use to announce who they support and where they belong.
+            </p>
+          </div>
+        </article>
+
+        <article class="category">
+          <a class="photo-link" href="jerseys.html" aria-label="View the Jerseys photo essay">
+            <img class="photo-link__img" src="images/cover-jerseys.svg" alt="Jerseys photo essay">
+          </a>
+          <div class="category__copy">
+            <span class="category__code">J-01</span>
+            <h2 class="category__title">Jerseys</h2>
+            <p class="category__blurb">
+              Jerseys function as a wearable, everyday extension of identity — a second
+              skin layered with names, numbers, and club or national crests. Because
+              they're worn on ordinary days as much as match days, jerseys blur the line
+              between spectator and belonging, turning identity into something lived
+              rather than performed only in the moment.
+            </p>
+          </div>
+        </article>
+
+        <article class="category">
+          <a class="photo-link" href="rituals.html" aria-label="View the Rituals photo essay">
+            <img class="photo-link__img" src="images/cover-rituals.svg" alt="Rituals photo essay">
+          </a>
+          <div class="category__copy">
+            <span class="category__code">R-01</span>
+            <h2 class="category__title">Rituals</h2>
+            <p class="category__blurb">
+              Chants, songs, and repeated fan traditions synchronize individual bodies
+              into a single collective voice. These rituals matter because they turn
+              isolated spectators into a coordinated group, reinforcing shared memory and
+              belonging each time the same words and gestures are repeated together.
+            </p>
+          </div>
+        </article>
+
+        <article class="category">
+          <a class="photo-link" href="costumes.html" aria-label="View the Costumes photo essay">
+            <img class="photo-link__img" src="images/cover-costumes.svg" alt="Costumes photo essay">
+          </a>
+          <div class="category__copy">
+            <span class="category__code">C-01</span>
+            <h2 class="category__title">Costumes</h2>
+            <p class="category__blurb">
+              Face paint, wigs, and elaborate dress push everyday fandom into deliberate
+              performance and spectacle. Costumes matter here because they show identity
+              being consciously staged — a fan choosing, often with real time and effort,
+              exactly how their allegiance should be seen.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer is plain text — no link — to keep this page's only
+       interactive elements the four photos above. -->
+  <footer class="site-footer container">
+    <p>Summer Humanities Research Program · Seattle, WA</p>
+  </footer>
+
+</body>
+</html>
