@@ -10,6 +10,22 @@
 <body>
 
   <!-- ============================================================
+       PAGE LOADER — a brief building-blocks animation shown while
+       the page loads, faded out by loader.js once everything is
+       ready. Purely decorative; the <noscript> rule keeps it from
+       blocking the page for anyone without JavaScript.
+       ============================================================ -->
+  <div class="loader" id="page-loader" aria-hidden="true">
+    <div class="loader__stack">
+      <span class="loader__block loader__block--1"></span>
+      <span class="loader__block loader__block--2"></span>
+      <span class="loader__block loader__block--3"></span>
+    </div>
+    <p class="loader__text">Built by students in the Arts &amp; Humanities</p>
+  </div>
+  <noscript><style>.loader { display: none; }</style></noscript>
+
+  <!-- ============================================================
        MASTHEAD — plain text only on the home page, on purpose.
        No nav links here: the four photos below (plus the section
        links under the hero title) are the only clickable things on
@@ -176,6 +192,8 @@
   <footer class="site-footer container">
     <p>Summer Institute in the Arts & Humanities 2026 · Seattle, WA</p>
   </footer>
+
+  <script src="loader.js"></script>
 
   <!-- ============================================================
        SECTION LINK ANIMATION — deliberately low-effort: on click,
