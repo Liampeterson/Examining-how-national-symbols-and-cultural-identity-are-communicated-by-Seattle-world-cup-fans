@@ -11,7 +11,7 @@
    "EDIT ME" comments mark what you'll actually want to touch.
    ========================================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@6..144,200..800&display=swap');
 
 /* -------------------------------------------------------------------------
    1. TOKENS
@@ -28,13 +28,18 @@
   --text: #F2F0EA;          /* primary text, warm off-white (not pure white) */
   --text-muted: #8C8A83;    /* secondary / caption text */
   --line: #2A2A27;          /* hairline borders, seams between bento tiles */
-  --accent: #CCFF00;        /* neon lime — the ONE sharp accent. use rarely. */
-  --accent-dim: #9FC700;    /* pressed/hover state for the accent */
+  --accent: #C9A227;        /* archive-label brass — the ONE sharp accent. use rarely. */
+  --accent-dim: #A6841F;    /* pressed/hover state for the accent */
 
   /* type */
-  --font-display: 'Fraunces', serif;   /* big expressive headings */
-  --font-body: 'Newsreader', serif;    /* quiet reading serif */
-  --font-mono: 'IBM Plex Mono', monospace; /* small caps labels, catalog codes */
+  /* One bold contemporary grotesque, three roles: headline, body, and
+     small tracked labels are all Bricolage Grotesque, differentiated
+     by weight/size/case rather than by swapping typefaces — closer to
+     how a museum brands its own exhibitions (bold sans wayfinding)
+     than a typical "heading font + body font + UI font" tech stack. */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'Bricolage Grotesque', sans-serif; /* labels/catalog codes — no monospace */
 
   /* layout */
   --max-width: 1200px;
@@ -166,16 +171,18 @@ img { max-width: 100%; display: block; }
 
 .hero__title {
   font-size: clamp(2.6rem, 7vw, 5.2rem);
-  font-weight: 300;
-  line-height: 1.02;
+  font-weight: 600;
+  line-height: 1.0;
   max-width: 20ch;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   margin: 0 auto; /* centers the title's own text block within .hero */
 }
 
 .hero__title em {
-  font-style: italic;
-  font-weight: 400;
+  /* Bricolage Grotesque has no true italic, so emphasis comes from a
+     weight jump + the accent color instead of a style switch. */
+  font-style: normal;
+  font-weight: 800;
   color: var(--accent);
 }
 
@@ -242,6 +249,7 @@ img { max-width: 100%; display: block; }
 .hero__intro .eyebrow {
   display: block;
   font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 700;
   letter-spacing: 0.04em;
   margin-bottom: 1rem;
 }
@@ -310,7 +318,7 @@ img { max-width: 100%; display: block; }
      charcoal background and the muted body text below it */
   color: var(--accent);
   font-size: clamp(1.6rem, 3.6vw, 2.3rem);
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .category__blurb {
@@ -329,7 +337,8 @@ img { max-width: 100%; display: block; }
 
 .essay-header h1 {
   font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 300;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin-top: 0.6rem;
 }
 
