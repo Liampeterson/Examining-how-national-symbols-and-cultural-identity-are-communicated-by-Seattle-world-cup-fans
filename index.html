@@ -11,8 +11,9 @@
 
   <!-- ============================================================
        MASTHEAD — plain text only on the home page, on purpose.
-       No nav links here: the four photos below are the only
-       clickable things on this page.
+       No nav links here: the four photos below (plus the section
+       links under the hero title) are the only clickable things on
+       this page.
        ============================================================ -->
   <header class="masthead container">
     <span class="masthead__wordmark">Visual Fan Identity Library · A 2026 World Cup Field Study, Seattle WA</span>
@@ -26,6 +27,19 @@
          ============================================================ -->
     <section class="hero container">
       <h1 class="hero__title">How do fans use <em>symbols, ritual, &amp; nationality</em> to perform identity?</h1>
+
+      <!-- ============================================================
+           SECTION LINKS — plain text, centered, larger than the small
+           mono nav used elsewhere. Each plays a quick decode animation
+           (see script at the bottom of this file) before navigating.
+           ============================================================ -->
+      <nav class="section-links" aria-label="About this project">
+        <a href="about.html" class="section-link">About</a>
+        <a href="methodology.html" class="section-link">Methodology</a>
+        <a href="limitations.html" class="section-link">Limitations</a>
+        <a href="bibliography.html" class="section-link">Bibliography</a>
+      </nav>
+
       <div class="hero__intro">
         <span class="eyebrow">Preface</span>
         <p>
@@ -125,11 +139,56 @@
     </section>
   </main>
 
-  <!-- Footer is plain text — no link — to keep this page's only
-       interactive elements the four photos above. -->
+  <!-- Footer is plain text — no link — to keep this page's other
+       interactive elements limited to the four photos and the
+       section links above. -->
   <footer class="site-footer container">
     <p>Summer Institute in the Arts & Humanities 2026 · Seattle, WA</p>
   </footer>
+
+  <!-- ============================================================
+       SECTION LINK ANIMATION — deliberately low-effort: on click,
+       scramble each link's letters for a few frames, then land on
+       its target page. Purely decorative; falls back to a normal
+       link if JS is unavailable (no e.preventDefault happens without it).
+       ============================================================ -->
+  <script>
+    (function () {
+      var links = document.querySelectorAll('.section-link');
+      var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+      links.forEach(function (link) {
+        var label = link.textContent;
+
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = link.getAttribute('href');
+          var frame = 0;
+          var totalFrames = 10;
+
+          link.classList.add('section-link--decoding');
+
+          var interval = setInterval(function () {
+            frame++;
+            var revealCount = Math.round((frame / totalFrames) * label.length);
+            var scrambled = label
+              .split('')
+              .map(function (ch, i) {
+                return i < revealCount ? ch : chars[Math.floor(Math.random() * chars.length)];
+              })
+              .join('');
+            link.textContent = scrambled;
+
+            if (frame >= totalFrames) {
+              clearInterval(interval);
+              link.textContent = label;
+              window.location.href = target;
+            }
+          }, 35);
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

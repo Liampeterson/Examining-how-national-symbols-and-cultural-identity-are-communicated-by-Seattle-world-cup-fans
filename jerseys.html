@@ -37,80 +37,75 @@
     </section>
 
     <!-- ============================================================
-         ESSAY BODY — repeat this .essay-block pattern for each
-         photo + text pairing in the essay. Duplicate the whole
-         <div class="essay-block">...</div> block to add more.
+         ESSAY BODY — one flowing, sequential list of figures: photo
+         on top, caption + field note directly underneath, then the
+         next figure below that. Order top-to-bottom IS the narrative
+         order (Fig. 1 first, Fig. 6 last). Duplicate one
+         <figure class="essay-figure">...</figure> block to add more.
          ============================================================ -->
     <section class="essay">
-      <div class="container">
+      <div class="container essay-sequence">
 
-        <div class="essay-block">
-          <div>
-            <!-- EDIT ME: swap src for a real photo, e.g. images/jerseys-01.jpg -->
-            <img src="images/cover-jerseys.svg" alt="Placeholder photo 1 for the Jerseys essay">
-            <p class="essay-block__caption">Fig. 1 — J-01.1 · [location / date]</p>
-          </div>
-          <div class="essay-block__text">
-            <p>
+        <figure class="essay-figure">
+          <!-- EDIT ME: swap src for a real photo, e.g. images/jerseys-01.jpg -->
+          <img src="images/cover-jerseys.svg" alt="Placeholder photo 1 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 1 — J-01.1 · [location / date]</span>
+            <p class="essay-figure__note">
               <!-- EDIT ME: write the observation, quote, or field note that goes
                    with this photo. -->
               Placeholder field note. Describe what is happening in this photograph —
               who is present, what they are wearing or carrying, and what it seemed to
               mean to them in the moment.
+              <span class="placeholder-note">Add your photo + text here.</span>
             </p>
-            <p class="placeholder-note">Add your photo + text here.</p>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <div class="essay-block">
-          <div>
-            <img src="images/generic-a.svg" alt="Placeholder photo 2 for the Jerseys essay">
-            <p class="essay-block__caption">Fig. 2 — J-01.2 · [location / date]</p>
-          </div>
-          <div class="essay-block__text">
-            <p>
+        <figure class="essay-figure">
+          <img src="images/generic-a.svg" alt="Placeholder photo 2 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 2 — J-01.2 · [location / date]</span>
+            <p class="essay-figure__note">
               Placeholder field note. This is a second image + text pairing — a good spot
               for an interview excerpt or a close reading of a specific object or gesture.
+              <span class="placeholder-note">Add your photo + text here.</span>
             </p>
-            <p class="placeholder-note">Add your photo + text here.</p>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <div class="essay-block">
-          <div>
-            <img src="images/generic-b.svg" alt="Placeholder photo 3 for the Jerseys essay">
-            <p class="essay-block__caption">Fig. 3 — J-01.3 · [location / date]</p>
-          </div>
-          <div class="essay-block__text">
-            <p>
+        <figure class="essay-figure">
+          <img src="images/generic-b.svg" alt="Placeholder photo 3 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 3 — J-01.3 · [location / date]</span>
+            <p class="essay-figure__note">
               Placeholder field note. Use this slot for analysis that ties the photo back
               to the project's shared theoretical framework.
+              <span class="placeholder-note">Add your photo + text here.</span>
             </p>
-            <p class="placeholder-note">Add your photo + text here.</p>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
 
-        <!-- ============================================================
-             MORE SHOTS — a simple grid for extra images that don't need
-             their own long write-up. Duplicate the <figure> to add more.
-             ============================================================ -->
-        <div class="more-shots">
-          <h2>More from the field</h2>
-          <div class="more-shots__grid">
-            <figure>
-              <img src="images/generic-c.svg" alt="Additional placeholder photo for the Jerseys essay">
-              <figcaption>J-01.4 · [caption]</figcaption>
-            </figure>
-            <figure>
-              <img src="images/generic-a.svg" alt="Additional placeholder photo for the Jerseys essay">
-              <figcaption>J-01.5 · [caption]</figcaption>
-            </figure>
-            <figure>
-              <img src="images/generic-b.svg" alt="Additional placeholder photo for the Jerseys essay">
-              <figcaption>J-01.6 · [caption]</figcaption>
-            </figure>
-          </div>
-        </div>
+        <figure class="essay-figure">
+          <img src="images/generic-c.svg" alt="Placeholder photo 4 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 4 — J-01.4 · [location / date]</span>
+          </figcaption>
+        </figure>
+
+        <figure class="essay-figure">
+          <img src="images/generic-a.svg" alt="Placeholder photo 5 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 5 — J-01.5 · [location / date]</span>
+          </figcaption>
+        </figure>
+
+        <figure class="essay-figure">
+          <img src="images/generic-b.svg" alt="Placeholder photo 6 for the Jerseys essay">
+          <figcaption>
+            <span class="essay-figure__num">Fig. 6 — J-01.6 · [location / date]</span>
+          </figcaption>
+        </figure>
 
       </div>
     </section>

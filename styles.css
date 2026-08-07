@@ -6,7 +6,7 @@
      2. Reset / base
      3. Masthead + footer
      4. Home page: hero + vertical category list
-     5. Sub-pages: essay header, essay blocks, more-shots grid, prev/next
+     5. Sub-pages: essay header, sequential essay figures, prev/next
      6. Small screens
    "EDIT ME" comments mark what you'll actually want to touch.
    ========================================================================= */
@@ -179,6 +179,49 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
 }
 
+/* Below the title, above the preface: text-only links out to the
+   project's meta pages (About, Methodology, Limitations,
+   Bibliography). Larger and more prominent than the small mono nav
+   used elsewhere, since this is the page's second interactive
+   element (after the four category photos further down). */
+.section-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+}
+
+.section-link {
+  font-family: var(--font-mono);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+}
+
+.section-link:hover,
+.section-link:focus-visible {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* Low-effort click animation: a quick pulse while the link text
+   scrambles/decodes in JS, right before navigating to its page. */
+.section-link--decoding {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  animation: section-link-pulse 0.4s ease;
+}
+
+@keyframes section-link-pulse {
+  0%   { letter-spacing: 0.06em; }
+  45%  { letter-spacing: 0.22em; }
+  100% { letter-spacing: 0.06em; }
+}
+
 .hero__intro {
   margin: clamp(1.5rem, 5vw, 2.5rem) auto 0; /* auto left/right centers this block */
   max-width: 42ch;
@@ -291,74 +334,53 @@ img { max-width: 100%; display: block; }
 
 .essay {
   padding: clamp(3rem, 6vw, 4.5rem) 0;
+}
+
+/* Sequential, single-column narrative: every figure stacks directly
+   beneath the one before it, photo on top and its caption/note
+   underneath — no side-by-side text, no separate grid section. */
+.essay-sequence {
   display: flex;
   flex-direction: column;
-  gap: clamp(2rem, 5vw, 3.5rem);
+  gap: clamp(2.5rem, 6vw, 4rem);
 }
 
-.essay-block {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: start;
+.essay-figure {
+  margin: 0;
 }
 
-.essay-block:nth-child(even) {
-  /* alternate which side the image sits on, for asymmetry down the page */
-  direction: rtl;
+.essay-figure img {
+  width: 100%;
+  border-radius: 10px;
+  background: var(--bg-elevated);
 }
-.essay-block:nth-child(even) > * { direction: ltr; }
 
-.essay-block__caption {
+.essay-figure figcaption {
+  margin-top: 0.9rem;
+  max-width: 62ch;
+}
+
+.essay-figure__num {
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   color: var(--text-muted);
-  margin: 0.6rem 0 0;
 }
 
-.essay-block__text p {
-  margin-top: 0;
+.essay-figure__note {
+  margin: 0.6rem 0 0;
   color: var(--text);
 }
 
-.essay-block__text .placeholder-note {
+.essay-figure__note .placeholder-note {
+  display: block;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--accent);
   border-left: 2px solid var(--accent);
   padding-left: 0.75rem;
   margin-top: 1rem;
-}
-
-.more-shots h2 {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 1.25rem;
-}
-
-.more-shots__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--seam);
-}
-
-.more-shots figure {
-  margin: 0;
-  background: var(--bg-elevated);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.more-shots figcaption {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  padding: 0.6rem 0.8rem;
 }
 
 .essay-nav {
@@ -380,6 +402,91 @@ img { max-width: 100%; display: block; }
 .essay-nav a:hover { color: var(--accent); }
 
 /* -------------------------------------------------------------------------
+   5b. META PAGES — About, Methodology, Limitations, Bibliography
+   ------------------------------------------------------------------------- */
+.page-section-title {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Methodology / Limitations: plain reading prose, one subsection per
+   h2, a paragraph or two underneath each. */
+.page-prose {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vw, 3rem);
+  max-width: 68ch;
+}
+
+.page-prose section > .page-section-title {
+  margin-bottom: 0.75rem;
+}
+
+.page-prose p {
+  margin: 0.75rem 0 0;
+  color: var(--text);
+}
+
+.page-prose p:first-of-type { margin-top: 0.75rem; }
+
+/* Bibliography: a plain hanging-indent citation list. */
+.bibliography-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 68ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.bibliography-list li {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+.author-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--seam);
+}
+
+.author-card {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--bg-elevated);
+  border-radius: 10px;
+}
+
+.author-card__code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.author-card__name {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.author-card__bio {
+  margin-top: 0.6rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+/* -------------------------------------------------------------------------
    6. SMALL SCREENS
    ------------------------------------------------------------------------- */
 @media (max-width: 800px) {
@@ -389,13 +496,7 @@ img { max-width: 100%; display: block; }
     aspect-ratio: 4 / 3;
   }
 
-  .essay-block,
-  .essay-block:nth-child(even) {
+  .author-grid {
     grid-template-columns: 1fr;
-    direction: ltr;
-  }
-
-  .more-shots__grid {
-    grid-template-columns: 1fr 1fr;
   }
 }
