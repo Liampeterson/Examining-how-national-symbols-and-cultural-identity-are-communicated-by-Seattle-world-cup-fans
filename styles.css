@@ -553,6 +553,38 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid var(--line);
 }
 
+.bibliography-section {
+  border-top: 1px solid var(--line);
+}
+
+.bibliography-list {
+  list-style: none;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  max-width: 68ch;
+}
+
+.bibliography-list li {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-left: 1.75rem;
+  text-indent: -1.75rem;
+  word-break: break-word;
+}
+
+.bibliography-list a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+}
+
+.bibliography-list a:hover {
+  color: var(--accent-dim);
+}
+
 .sponsors-section {
   padding-top: clamp(2rem, 4vw, 3rem);
   border-top: 1px solid var(--line);
@@ -619,7 +651,9 @@ img { max-width: 100%; display: block; }
   color: var(--text);
 }
 
-.page-flags .essay-figure figcaption {
+.page-flags .essay-figure figcaption,
+.page-jerseys .essay-figure figcaption,
+.page-costumes .essay-figure figcaption {
   max-width: 92%;
   margin-left: auto;
   margin-right: auto;
