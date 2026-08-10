@@ -485,6 +485,16 @@ img { max-width: 100%; display: block; }
   font-size: 1.05rem;
 }
 
+.essay-header--centered {
+  text-align: center;
+}
+
+.essay-header--centered .essay-header__framework {
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .essay-header__byline {
   font-family: var(--font-mono);
   font-size: 0.8rem;
