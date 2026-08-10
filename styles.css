@@ -576,6 +576,13 @@ img { max-width: 100%; display: block; }
   color: var(--text);
 }
 
+.page-flags .essay-figure figcaption {
+  max-width: 92%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 .essay-figure__note .placeholder-note {
   display: block;
   font-family: var(--font-mono);
