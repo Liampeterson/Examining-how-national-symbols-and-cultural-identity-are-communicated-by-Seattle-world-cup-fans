@@ -485,6 +485,46 @@ img { max-width: 100%; display: block; }
   font-size: 1.05rem;
 }
 
+.essay-header__byline {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.essay-header__byline-author {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.essay-preface {
+  padding-top: clamp(1.75rem, 4vw, 2.75rem);
+  text-align: center;
+}
+
+.essay-preface .eyebrow {
+  display: block;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.essay-preface__text {
+  max-width: 62ch;
+  color: var(--text-muted);
+  margin: 0.75rem auto 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.essay-preface__text + .essay-preface__text {
+  margin-top: 1.25rem;
+}
+
 .essay {
   padding: clamp(3rem, 6vw, 4.5rem) 0;
 }
