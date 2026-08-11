@@ -503,6 +503,11 @@ img { max-width: 100%; display: block; }
   margin-right: auto;
 }
 
+.essay-header--centered .essay-header__framework--wide {
+  max-width: none;
+  text-align: left;
+}
+
 .essay-header__byline {
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -712,6 +717,120 @@ img { max-width: 100%; display: block; }
 
 .page-prose section > .page-section-title {
   margin-bottom: 0.75rem;
+}
+
+/* Collapsible info dropdowns at page bottom (Matches Specified, Seattle Fan Areas) */
+.details-toggle-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 clamp(2rem, 5vw, 4rem);
+}
+
+@media (max-width: 640px) {
+  .details-toggle-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.details-toggle {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0.25rem 0;
+}
+
+@media (max-width: 640px) {
+  .details-toggle-row .details-toggle + .details-toggle {
+    border-top: none;
+  }
+}
+
+.details-toggle__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5rem 0;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.details-toggle__summary::-webkit-details-marker { display: none; }
+
+.details-toggle__summary:hover,
+.details-toggle[open] .details-toggle__summary { color: var(--text); }
+
+.details-toggle__icon {
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.details-toggle[open] .details-toggle__icon {
+  transform: rotate(-135deg);
+}
+
+.details-toggle__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0 1.5rem;
+}
+
+.details-toggle__stage {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+.details-toggle__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.details-toggle__list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.match-date {
+  color: var(--text-muted);
+}
+
+.match-date::after { content: "—"; margin-left: 0.5rem; }
+
+.match-venue {
+  color: var(--text-muted);
+}
+
+.match-venue::before { content: "("; }
+.match-venue::after { content: ")"; }
+
+.area-name::after { content: "—"; margin: 0 0.5rem 0 0.35rem; color: var(--text-muted); }
+
+.area-landmarks {
+  color: var(--text-muted);
 }
 
 .page-prose p {
