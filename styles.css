@@ -56,6 +56,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
@@ -281,6 +282,16 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 
+/* Fills the first viewport on its own (title + section links), so the
+   Introduction copy in .hero__intro sits below the fold until the
+   user scrolls, instead of peeking in right under the menu. */
+.hero__lead {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .hero__title {
   font-size: clamp(2.6rem, 7vw, 5.2rem);
   font-weight: 600;
@@ -391,23 +402,26 @@ img { max-width: 100%; display: block; }
 }
 
 /* -------------------------------------------------------------------------
-   4b. HOME — a vertical, scrollable list of the four categories.
-   Each .category is: one big photo (the ONLY clickable element — the
-   <a class="photo-link">), then a heading and a short blurb sitting
-   underneath it as plain, non-interactive text. All four photos share
-   the same aspect ratio so they read as one consistent list.
+   4b. HOME — the four categories sit in a 2-column grid, so two photos
+   stack on top of the other two. Each .category is: one photo (the
+   ONLY clickable element — the <a class="photo-link">), then a heading
+   and a short blurb sitting underneath it as plain, non-interactive
+   text. Every photo box is the same size (shared aspect ratio), and
+   object-fit: contain shows each photo in full — uncropped — inside
+   that box. No divider lines between categories; spacing alone
+   separates them. Collapses to a single stacked column on small
+   screens (see the SMALL SCREENS block below).
    ------------------------------------------------------------------------- */
 .category-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
+  align-items: start;
 }
 
 .category {
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
-  border-top: 1px solid var(--line);
+  padding: 0;
 }
-
-.category:first-child { border-top: none; padding-top: 0; }
 
 .photo-link {
   position: relative;
@@ -415,7 +429,7 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   background: var(--bg-elevated);
   border-radius: 10px;
-  aspect-ratio: 16 / 9; /* same shape for every photo, however big the screen */
+  aspect-ratio: 3 / 2; /* same box size for every photo, however big the screen */
   width: 100%;
 }
 
@@ -424,7 +438,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* show each photo in full, uncropped, within the equal-size box */
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
   opacity: 0.9;
 }
@@ -436,31 +450,32 @@ img { max-width: 100%; display: block; }
 }
 
 .category__copy {
-  margin-top: clamp(1.25rem, 3vw, 1.75rem);
-  max-width: 62ch;
+  margin-top: clamp(1rem, 2vw, 1.25rem);
+  max-width: none;
 }
 
 .category__code {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   letter-spacing: 0.12em;
   color: var(--text-muted);
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .category__title {
   /* the secondary/accent color, so each heading pops against the
      charcoal background and the muted body text below it */
   color: var(--accent);
-  font-size: clamp(1.6rem, 3.6vw, 2.3rem);
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
   font-weight: 600;
 }
 
 .category__blurb {
-  margin-top: 0.75rem;
+  margin-top: 0.6rem;
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
 /* -------------------------------------------------------------------------
@@ -469,6 +484,44 @@ img { max-width: 100%; display: block; }
 .essay-header {
   padding: clamp(2rem, 5vw, 3rem) 0 clamp(2rem, 5vw, 3rem);
   border-bottom: 1px solid var(--line);
+}
+
+.essay-header__cover {
+  position: relative;
+  overflow: hidden;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.essay-header__cover img {
+  display: block;
+  width: 100%;
+  background: var(--bg-elevated);
+}
+
+.essay-header__cover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.essay-header__cover-label {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-shadow: 0 7px 5px rgba(0, 0, 0, 0.5); /* angle 270°, distance 7px, blur 5px, black @ 50% */
 }
 
 .essay-header h1 {
@@ -898,8 +951,9 @@ img { max-width: 100%; display: block; }
 @media (max-width: 800px) {
   .hero__title { max-width: none; }
 
-  .photo-link {
-    aspect-ratio: 4 / 3;
+  .category-list {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 6vw, 3rem);
   }
 
   .author-grid {
