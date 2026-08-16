@@ -21,6 +21,22 @@
     </nav>
   </header>
 
+  <!-- Scrolls past the masthead immediately, before the page paints,
+       so the photo fills the screen on load while the black nav bar
+       stays a normal part of the page (revealed by scrolling up). -->
+  <script>
+    (function () {
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      // Wait for the full document (including the 100vh photo section)
+      // to be parsed — scrolling before that exists gets clamped back
+      // to ~0 since the page isn't tall enough yet.
+      document.addEventListener('DOMContentLoaded', function () {
+        var header = document.querySelector('.masthead');
+        if (header) { window.scrollTo(0, header.offsetHeight); }
+      });
+    })();
+  </script>
+
   <div class="essay-header__scroll-cue" aria-hidden="true">
     <span class="essay-header__scroll-cue-icon"></span>
   </div>
