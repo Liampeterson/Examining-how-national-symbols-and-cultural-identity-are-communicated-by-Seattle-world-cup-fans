@@ -519,21 +519,42 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--line);
 }
 
+/* On the four photo essays, .essay-header__cover fills the whole first
+   viewport, so this kills the section's own top padding — the photo
+   should sit flush under the masthead, not float below a gap. Pages
+   without a cover (About, Methodology, Limitations) are unaffected. */
+.essay-header:has(.essay-header__cover) {
+  padding-top: 0;
+}
+
+/* Full-screen photo hero. height (not min-height) so it always fills
+   exactly one viewport — everything after it (the essay title, byline,
+   and body) sits below the fold until the user scrolls, which is what
+   creates the "swoosh" reveal into the essay. */
 .essay-header__cover {
   position: relative;
   overflow: hidden;
   left: 50%;
   right: 50%;
   width: 100vw;
+  height: 100vh;
   margin-left: -50vw;
   margin-right: -50vw;
   margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
 
+/* Sized taller than its box (124%) so parallax.js can translate it
+   within that headroom without ever exposing an empty edge — the
+   photo drifts slower than the page as the user scrolls past it. */
 .essay-header__cover img {
-  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 124%;
+  object-fit: cover;
   background: var(--bg-elevated);
+  will-change: transform;
 }
 
 .essay-header__cover-overlay {
@@ -547,6 +568,64 @@ img { max-width: 100%; display: block; }
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
+}
+
+/* Soft fade at the bottom of the photo so the cut into the page
+   background (where the essay title picks up) reads as a blend
+   rather than a hard edge. */
+.essay-header__cover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 30%;
+  z-index: 2;
+  background: linear-gradient(to bottom, transparent, var(--bg) 94%);
+  pointer-events: none;
+}
+
+/* Bouncing "scroll to continue" cue. Fixed to the viewport (not the
+   photo box) so it's visible on load regardless of masthead height,
+   and fades out once the user actually starts scrolling — see the
+   scroll listener in parallax.js. */
+.essay-header__scroll-cue {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1.5rem, 5vw, 3rem);
+  z-index: 50;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  animation: essay-scroll-cue-bounce 1.8s ease-in-out infinite;
+}
+
+.essay-header__scroll-cue.is-hidden {
+  opacity: 0;
+  animation-play-state: paused;
+}
+
+.essay-header__scroll-cue-icon {
+  display: block;
+  width: 0.85em;
+  height: 0.85em;
+  font-size: 1.6rem;
+  border-right: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotate(45deg);
+  filter: blur(0.4px) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+@keyframes essay-scroll-cue-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .essay-header__scroll-cue {
+    animation: none;
+    transform: translateX(-50%);
+  }
 }
 
 .essay-header__cover-label {
