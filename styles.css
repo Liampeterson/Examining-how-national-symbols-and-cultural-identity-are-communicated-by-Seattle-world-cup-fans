@@ -821,6 +821,28 @@ img { max-width: 100%; display: block; }
   background: var(--bg-elevated);
 }
 
+/* Empty photo slot for a figure that hasn't been shot/added yet —
+   same box treatment as a real photo, minus the image. */
+.essay-figure__placeholder {
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  border-radius: 10px;
+  background: var(--bg-elevated);
+  border: 1px dashed var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.essay-figure__placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
 .essay-figure figcaption {
   margin-top: 0.9rem;
   max-width: 62ch;
