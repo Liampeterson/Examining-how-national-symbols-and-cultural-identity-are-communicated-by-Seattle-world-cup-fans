@@ -135,14 +135,18 @@
          CATEGORY LIST — the only interactive elements on this page.
          Each category is one <article class="category"> containing:
            1) a photo wrapped in <a class="photo-link"> — the ONLY link
-           2) a heading + short blurb underneath, as plain text (not a link)
+           2) a heading underneath, as plain text (not a link)
          All four photos share the same aspect ratio (set in styles.css)
          so they read as one consistent scrolling list.
          To reorder categories, move the whole <article>...</article>
-         block up or down. To edit a blurb, just rewrite the text inside
-         its <p class="category__blurb">.
+         block up or down.
          ============================================================ -->
     <section class="container">
+      <div class="category-list__intro">
+        <span class="category-list__title">Photo Essays</span>
+        <p class="category-list__subtitle">Fandom and identity at the FIFA World Cup, explored through four visual essays.</p>
+      </div>
+
       <div class="category-list">
 
         <article class="category">
@@ -152,13 +156,6 @@
           </a>
           <div class="category__copy">
             <h2 class="category__title">Flags</h2>
-            <!-- EDIT ME -->
-            <p class="category__blurb">
-              Flags convert private loyalty into a public, legible claim — visible across
-              a stadium concourse or a living room window long before anyone speaks. They
-              mark territory and allegiance at a glance, making them one of the most
-              immediate symbols fans use to announce who they support and where they belong.
-            </p>
           </div>
         </article>
 
@@ -168,13 +165,6 @@
           </a>
           <div class="category__copy">
             <h2 class="category__title">Jerseys</h2>
-            <p class="category__blurb">
-              Jerseys function as a wearable, everyday extension of identity — a second
-              skin layered with names, numbers, and club or national crests. Because
-              they're worn on ordinary days as much as match days, jerseys blur the line
-              between spectator and belonging, turning identity into something lived
-              rather than performed only in the moment.
-            </p>
           </div>
         </article>
 
@@ -184,12 +174,6 @@
           </a>
           <div class="category__copy">
             <h2 class="category__title">Ritual</h2>
-            <p class="category__blurb">
-              Chants, songs, and repeated fan traditions synchronize individual bodies
-              into a single collective voice. These rituals matter because they turn
-              isolated spectators into a coordinated group, reinforcing shared memory and
-              belonging each time the same words and gestures are repeated together.
-            </p>
           </div>
         </article>
 
@@ -199,12 +183,6 @@
           </a>
           <div class="category__copy">
             <h2 class="category__title">Costumes</h2>
-            <p class="category__blurb">
-              Face paint, wigs, and elaborate dress push everyday fandom into deliberate
-              performance and spectacle. Costumes matter here because they show identity
-              being consciously staged, a fan choosing, often with real time and effort,
-              exactly how their allegiance should be seen.
-            </p>
           </div>
         </article>
 
