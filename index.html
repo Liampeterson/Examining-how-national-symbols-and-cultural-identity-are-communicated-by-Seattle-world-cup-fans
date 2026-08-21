@@ -28,14 +28,48 @@
   <noscript><style>.loader { display: none; }</style></noscript>
 
   <!-- ============================================================
-       MASTHEAD — plain text only on the home page, on purpose.
-       No nav links here: the four photos below (plus the section
-       links under the hero title) are the only clickable things on
-       this page.
+       MASTHEAD — the section links (About/Methodology/Limitations)
+       sit top-right, next to the wordmark. The four category photos
+       further down are still the page's other interactive elements.
        ============================================================ -->
-  <header class="masthead container">
+  <header class="masthead masthead--home container">
     <span class="masthead__wordmark">Visual Fan Identity Library · A 2026 World Cup Field Study, Seattle WA</span>
+
+    <!-- ============================================================
+         SECTION LINKS — plain text, larger than the small mono nav
+         used elsewhere. Each plays a quick decode animation (see
+         script at the bottom of this file) before navigating.
+         ============================================================ -->
+    <nav class="section-links" aria-label="About this project">
+      <a href="about.html" class="section-link">About</a>
+      <a href="methodology.html" class="section-link">Methodology</a>
+      <a href="limitations.html" class="section-link">Limitations</a>
+    </nav>
   </header>
+
+  <!-- Scrolls past the masthead immediately, before the page paints,
+       so only the centered title fills the screen on load while the
+       masthead stays a normal part of the page (revealed by scrolling
+       up) — same technique used on the photo essay pages. -->
+  <script>
+    (function () {
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+      // Wait for the full document (including the 100vh hero) to be
+      // parsed — scrolling before that exists gets clamped back to ~0
+      // since the page isn't tall enough yet.
+      document.addEventListener('DOMContentLoaded', function () {
+        var header = document.querySelector('.masthead');
+        if (header) { window.scrollTo(0, header.offsetHeight); }
+      });
+    })();
+  </script>
+
+  <!-- Bouncing "scroll to continue" cue, fixed to the viewport, that
+       fades out once the user starts scrolling — same behavior as on
+       the photo essay pages (see parallax.js). -->
+  <div class="essay-header__scroll-cue" aria-hidden="true">
+    <span class="essay-header__scroll-cue-icon"></span>
+  </div>
 
   <main>
     <!-- ============================================================
@@ -45,23 +79,12 @@
          ============================================================ -->
     <section class="hero container">
       <!-- ============================================================
-           HERO LEAD — headline + section links, sized to fill the
-           first viewport on their own so the Introduction copy below
-           sits below the fold until the user scrolls.
+           HERO LEAD — the headline alone, sized to fill the first
+           viewport on its own so the Introduction copy below sits
+           below the fold until the user scrolls.
            ============================================================ -->
       <div class="hero__lead">
         <h1 class="hero__title">How do fans use <em>symbols, ritual, &amp; nationality</em> to perform identity?</h1>
-
-        <!-- ============================================================
-             SECTION LINKS — plain text, centered, larger than the small
-             mono nav used elsewhere. Each plays a quick decode animation
-             (see script at the bottom of this file) before navigating.
-             ============================================================ -->
-        <nav class="section-links" aria-label="About this project">
-          <a href="about.html" class="section-link">About</a>
-          <a href="methodology.html" class="section-link">Methodology</a>
-          <a href="limitations.html" class="section-link">Limitations</a>
-        </nav>
       </div>
 
       <div class="hero__intro">
@@ -127,7 +150,6 @@
             <img class="photo-link__img" src="cover-flags.jpg" alt="Flags photo essay">
           </a>
           <div class="category__copy">
-            <span class="category__code">F-01</span>
             <h2 class="category__title">Flags</h2>
             <!-- EDIT ME -->
             <p class="category__blurb">
@@ -144,7 +166,6 @@
             <img class="photo-link__img" src="JerseyCoverPhoto.JPG" alt="Jerseys photo essay">
           </a>
           <div class="category__copy">
-            <span class="category__code">J-01</span>
             <h2 class="category__title">Jerseys</h2>
             <p class="category__blurb">
               Jerseys function as a wearable, everyday extension of identity — a second
@@ -161,8 +182,7 @@
             <img class="photo-link__img" src="Ritual_Photo0.jpg" alt="Rituals photo essay">
           </a>
           <div class="category__copy">
-            <span class="category__code">R-01</span>
-            <h2 class="category__title">Rituals</h2>
+            <h2 class="category__title">Ritual</h2>
             <p class="category__blurb">
               Chants, songs, and repeated fan traditions synchronize individual bodies
               into a single collective voice. These rituals matter because they turn
@@ -177,7 +197,6 @@
             <img class="photo-link__img" src="Costume_CoverPhoto.jpg" alt="Costumes photo essay">
           </a>
           <div class="category__copy">
-            <span class="category__code">C-01</span>
             <h2 class="category__title">Costumes</h2>
             <p class="category__blurb">
               Face paint, wigs, and elaborate dress push everyday fandom into deliberate
@@ -200,6 +219,7 @@
   </footer>
 
   <script src="loader.js"></script>
+  <script src="parallax.js"></script>
 
   <!-- ============================================================
        SECTION LINK ANIMATION — deliberately low-effort: on click,
